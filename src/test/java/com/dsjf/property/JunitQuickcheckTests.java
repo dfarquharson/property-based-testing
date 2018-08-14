@@ -6,18 +6,22 @@ import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 @RunWith(JUnitQuickcheck.class)
-public class HelloTest {
+public class JunitQuickcheckTests {
+
+    private static AtomicLong counter = new AtomicLong();
 
     @Property
     public void concatenationLength(String s1, String s2) {
         assertThat(s1.length() + s2.length())
-                .isEqualTo((s1 + s2).length());
+            .isEqualTo((s1 + s2).length());
     }
 
-    @Property
+    @Property(trials = 1000)
     public void associativeAddition(Integer i, Integer j) {
-        System.out.println(i + " + " + j);
+        System.out.println(counter.incrementAndGet() + ": " + i + " + " + j);
         assertThat(i + j).isEqualTo(j + i);
     }
 
