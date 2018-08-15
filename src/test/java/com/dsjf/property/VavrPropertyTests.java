@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import io.vavr.CheckedFunction1;
 import io.vavr.collection.Stream;
 import io.vavr.test.Arbitrary;
-import io.vavr.test.CheckResult;
 import io.vavr.test.Property;
 import org.junit.Test;
 
@@ -56,13 +55,11 @@ public class VavrPropertyTests {
         CheckedFunction1<Integer, Boolean> mustStartWithFizz = i ->
             fizzBuzz().get(i - 1).startsWith("Fizz");
 
-        CheckResult result = Property
-            .def("Every third element must start with Fizz")
+        Property.def("Every third element must start with Fizz")
             .forAll(multiplesOf3)
             .suchThat(mustStartWithFizz)
-            .check(10_000, 1_000);
-
-        result.assertIsSatisfied();
+            .check(10_000, 1_000)
+            .assertIsSatisfied();
     }
 
     @Test
