@@ -18,7 +18,8 @@ Whenever `String` is a permissible input, the entire works of Shakespeare in Kor
 ### Call to Action
 
 Our first mission is to try our best to define functions with such limited domain and range that they are exhaustibly testable in example-based scenarios.
-Unfortunately, "reality" often dictates a domain and range that cannot reasonably be exhaustibly tested (although I think this "reality" does not *need* to exist as frequently as we employ it, but that's a story for another day).
+Unfortunately, "reality" often dictates a domain and range that cannot reasonably be exhaustibly tested
+(although I think this "reality" does not *need* to exist as frequently as we employ it, but that's a story for another day).
 This is where property-based testing comes to our aid.
 
 ### Property Based Testing
@@ -31,8 +32,9 @@ Property based testing seeks to find falsifying examples of our asserted propert
 Unit testing is not enough. You can have 100% line and 100% branch coverage and still have bugs.
 We need something more. Property-based testing can help (but it is not a panacea: see [Dependent] Static Types (Haskell, Idris, Agda), formal methods (TLA+)).
 
-- Curry-Howard Isomorphism
-- Gödel's Incompleteness Theorems
+### Name Dropping Some Fancy-Sounding Things Due to Their Implication on the Pursuit of Deterministic Certainty
+- [Curry-Howard Isomorphism](https://en.wikipedia.org/wiki/Curry%E2%80%93Howard_correspondence) 
+- [Gödel's Incompleteness Theorems](https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems)
 
 
 ## How?
@@ -41,7 +43,7 @@ We need something more. Property-based testing can help (but it is not a panacea
 - Instruct your property testing framework to generate `n` samples in the specified domain
 - Hope for a falsifying case to show you the error of your ways
 
-Live coding demo! 
+Live coding demo!
 
 
 ## Angst Remains
@@ -64,10 +66,18 @@ This is why I'm obsessed with static types and other forms of static analysis, b
 - Javascript
   - [jsverify](https://github.com/jsverify/jsverify)
   
-- If you're using some other hipster language you can find your own property based testing framework
+- If you're using some other hipster language you can find your own property based testing framework, you dirty hipster
 
 
-## Honestly
-Property based testing is hard, and takes a lot of time.
+## Sober Conclusion
+Property based testing is hard, makes you think, and takes a lot of time.
 Our finite effort is probably better spent limiting our domain and range of our functions wherever possible.
 But in the presence of large domains and ranges combined with the need for extensive verification, property based testing can be quite helpful.
+
+We continue to chase the white rabbit of software quality and correctness, but property-based testing is a tool that gets us a little bit closer to catching it
+(although we are perhaps forever doomed to some variation of [Zeno's Paradox](https://en.wikipedia.org/wiki/Zeno%27s_paradoxes) in this regard).
+There are still other means we can use to get closer:
+- Primarily employing [total functions](https://en.wikipedia.org/wiki/Partial_function#Total_function)
+- Opting out of [Turing Completeness](https://en.wikipedia.org/wiki/Turing_completeness) to avoid pernicious proliferation of the halting problem
+- [Type Theory](https://en.wikipedia.org/wiki/Type_theory) in general is a tremendously active area of research directly related to software correctness
+- [Abstract Nonsense](https://en.wikipedia.org/wiki/Category_theory)
